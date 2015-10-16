@@ -21,12 +21,12 @@ class TestPuissanceN(unittest.TestCase):
 		
 	def test_Stephane_joue_colonne_1(self):
 		self.game.ajouterJoueur("Stéphane")
-		self.game.jouer("Stéphane", 1)
+		self.game.jouer("Stéphane", 0)
 		self.assertEqual(self.game.board, [["R"] + [" "]*7] + [[" "]*8]*7)
 		
 	def test_Stephane_joue_colonne_2(self):
 		self.game.ajouterJoueur("Stéphane")
-		self.game.jouer("Stéphane", 2)
+		self.game.jouer("Stéphane", 1)
 		self.assertEqual(self.game.board, [[" "]*8] + [["R"] + [" "]*7] + [[" "]*8]*6)
 		
 
