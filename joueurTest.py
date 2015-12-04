@@ -4,15 +4,16 @@ import joueur
 class TestJoueur(unittest.TestCase):
     
     def setUp(self):
-        joueur.init()
-    
+        self.joueurFabrique = joueur.JoueurFabrique()
+        
     def test_premier_joueur_id_à_0(self):
-        stéphane = joueur.Joueur()
+        stéphane = self.joueurFabrique.creerJoueur()
         self.assertEqual(0, stéphane.id)
         
     def test_second_joueur_id_à_1(self):
-        stéphane = joueur.Joueur()
-        jessica = joueur.Joueur()
+        stéphane = self.joueurFabrique.creerJoueur()
+        jessica = self.joueurFabrique.creerJoueur()
+        self.assertEqual(0, stéphane.id)
         self.assertEqual(1, jessica.id)
         
     		
