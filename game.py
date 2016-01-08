@@ -1,11 +1,12 @@
 class Game():
-    players = []
-    
-    
     def __init__(self):
-        pass
+        self.players = []
     
     def accepts(self, user):
-        self.players = [user]
+        if len(self.players) >= 2:
+            raise TooManyPlayersException()
+        self.players.append(user)
     
     
+class TooManyPlayersException(Exception):
+    pass
