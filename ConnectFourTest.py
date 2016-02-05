@@ -72,6 +72,59 @@ class ConnectFourTest(unittest.TestCase):
         self.assertEqual([jessica, robert], game.players)
         
     
+    #
+    #
+    # Play a turn
+    #
+    #
+    
+    # 
+    # Scenario I: First player plays first shot 
+    #
+    def test_Jessica_plays_first_shot(self):
+        # Given
+        game = Game()
+        jessica = User("Jessica")
+        robert = User("Robert")
+        game.accepts(jessica)
+        game.accepts(robert)
+        
+        self.assertEqual(jessica, game.currentPlayer)
+
+        # When
+        game.play(jessica, 0)
+        
+        # Then
+        self.assertEqual([jessica], game.getColumn(0))
+        
+        for i in range(1, 6):
+            self.assertEqual([], game.getColumn(i))
+        
+        self.assertEqual(robert, game.currentPlayer)
+    
+    # 
+    # Scenario II: Second player tries to play first shot 
+    #
+    # def test_Robert_tries_to_play_first_shot(self):
+    #     # Given
+    #     game = Game()
+    #     jessica = User("Jessica")
+    #     robert = User("Robert")
+    #     game.accepts(jessica)
+    #     game.accepts(robert)
+        
+    #     self.assertEqual(jessica, game.currentPlayer)
+
+    #     # When-Then
+    #     with self.assertRaises(NotPlayerTurnException):
+    #         game.play(robert, 0)
+        
+    #     for i in range(0, 6):
+    #         self.assertEqual([], game.getColumn(i))
+        
+    #     self.assertEqual(jessica, game.currentPlayer)
+
+        
 
 if __name__=="__main__":		
 	unittest.main()
